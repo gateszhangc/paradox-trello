@@ -20,7 +20,7 @@ Route summary:
 
 - Hostnames: `paradox-trello.lol`, `www.paradox-trello.lol`
 - Preview hostname: `paradox-trello.144.91.77.245.sslip.io`
-- TLS issuer annotation: `letsencrypt-prod`
+- TLS issuer annotation: `letsencrypt-dns-prod`
 - Ingress class: `nginx`
 - Live DNS target A records:
   - `144.91.73.228`
@@ -29,6 +29,7 @@ Route summary:
 - Public env:
   - `NEXT_PUBLIC_WEB_URL=https://paradox-trello.lol`
   - `NEXT_PUBLIC_PROJECT_NAME=paradox-trello`
+  - `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-2T32WKRTVM`
   - `NEXT_PUBLIC_CLARITY_PROJECT_ID=wbhm990q09`
   - `NEXT_PUBLIC_AUTH_DISABLED=true`
 - Landing-first indexing:
