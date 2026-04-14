@@ -6,6 +6,6 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - service.yaml
-  - live-certificate.yaml
+  - dns-issuer.yaml
   - ingress.yaml
   - preview-ingress.yaml
