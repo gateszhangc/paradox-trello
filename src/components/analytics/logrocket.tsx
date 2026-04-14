@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useAppContext } from "@/contexts/app";
 
-const LOGROCKET_APP_ID = process.env.NEXT_PUBLIC_LOGROCKET_APP_ID?.trim() || "";
-
 type LogRocketClient = typeof import("logrocket").default;
 
 type LogRocketWindow = Window & {
@@ -16,14 +14,16 @@ type LogRocketWindow = Window & {
 
 let logrocketClient: LogRocketClient | null = null;
 let initPromise: Promise<LogRocketClient | null> | null = null;
+let initializedAppId = "";
 
 const getWindow = () =>
   typeof window === "undefined" ? null : (window as LogRocketWindow);
 
-const initLogRocket = async () => {
+const initLogRocket = async (appId: string) => {
   const w = getWindow();
   if (!w) return null;
-  if (w.__logrocketInitialized && logrocketClient) {
+  if (!appId) return null;
+  if (w.__logrocketInitialized && logrocketClient && initializedAppId === appId) {
     return logrocketClient;
   }
   if (initPromise) {
@@ -32,7 +32,7 @@ const initLogRocket = async () => {
 
   initPromise = (async () => {
     const { default: LogRocket } = await import("logrocket");
-    LogRocket.init(LOGROCKET_APP_ID);
+    LogRocket.init(appId);
 
     try {
       const { default: setupLogRocketReact } = await import("logrocket-react");
@@ -43,6 +43,7 @@ const initLogRocket = async () => {
 
     w.__logrocketInitialized = true;
     logrocketClient = LogRocket;
+    initializedAppId = appId;
     return LogRocket;
   })().catch(() => {
     initPromise = null;
@@ -84,28 +85,31 @@ const getActionLabel = (event: Event) => {
   return dataAction ? `${event.type}:${tag}:${dataAction}` : `${event.type}:${tag}`;
 };
 
-if (typeof window !== "undefined" && LOGROCKET_APP_ID) {
-  initLogRocket();
-}
+type LogRocketAnalyticsProps = {
+  appId?: string;
+};
 
-export default function LogRocketAnalytics() {
+export default function LogRocketAnalytics({
+  appId = "",
+}: LogRocketAnalyticsProps) {
   const { user } = useAppContext();
   const pathname = usePathname();
   const locale = useLocale();
   const lastActionRef = useRef<string | null>(null);
+  const normalizedAppId = appId.trim();
 
-  if (process.env.NODE_ENV !== "production" || !LOGROCKET_APP_ID) {
+  if (process.env.NODE_ENV !== "production" || !normalizedAppId) {
     return null;
   }
 
   useEffect(() => {
-    initLogRocket().then((client) => {
+    initLogRocket(normalizedAppId).then((client) => {
       setMetadata(client, { pathname, locale });
     });
-  }, [pathname, locale]);
+  }, [normalizedAppId, pathname, locale]);
 
   useEffect(() => {
-    initLogRocket().then((client) => {
+    initLogRocket(normalizedAppId).then((client) => {
       if (!client) return;
       if (user?.uuid) {
         (client as any).identify?.(user.uuid, {
@@ -114,7 +118,7 @@ export default function LogRocketAnalytics() {
         });
       }
     });
-  }, [user?.uuid, user?.email, user?.nickname]);
+  }, [normalizedAppId, user?.uuid, user?.email, user?.nickname]);
 
   useEffect(() => {
     const w = getWindow();
@@ -136,7 +140,7 @@ export default function LogRocketAnalytics() {
     const handleError = (event: ErrorEvent) => {
       const error = event.error ?? new Error(event.message || "Unknown error");
       const lastAction = lastActionRef.current || w.__logrocketLastAction;
-      initLogRocket().then((client) => {
+      initLogRocket(normalizedAppId).then((client) => {
         if (!client) return;
         setMetadata(client, {
           pathname,
@@ -153,7 +157,7 @@ export default function LogRocketAnalytics() {
           ? reason
           : new Error(`Unhandled rejection: ${String(reason)}`);
       const lastAction = lastActionRef.current || w.__logrocketLastAction;
-      initLogRocket().then((client) => {
+      initLogRocket(normalizedAppId).then((client) => {
         if (!client) return;
         setMetadata(client, {
           pathname,
@@ -170,7 +174,7 @@ export default function LogRocketAnalytics() {
       window.removeEventListener("error", handleError);
       window.removeEventListener("unhandledrejection", handleRejection);
     };
-  }, [pathname, locale]);
+  }, [normalizedAppId, pathname, locale]);
 
   return null;
 }

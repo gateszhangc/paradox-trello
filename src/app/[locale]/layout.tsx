@@ -14,6 +14,8 @@ import {
   BLOODHOUNDS_SITE_NAME,
 } from "@/lib/bloodhounds-site";
 
+const readRuntimeEnv = (key: string) => process.env[key]?.trim() || "";
+
 export async function generateMetadata({
   params,
 }: {
@@ -64,12 +66,17 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const analyticsConfig = {
+    googleAnalyticsId: readRuntimeEnv("NEXT_PUBLIC_GOOGLE_ANALYTICS_ID"),
+    clarityId: readRuntimeEnv("NEXT_PUBLIC_CLARITY_PROJECT_ID"),
+    logRocketAppId: readRuntimeEnv("NEXT_PUBLIC_LOGROCKET_APP_ID"),
+  };
 
   return (
     <NextIntlClientProvider messages={messages}>
       <NextAuthSessionProvider>
         <AppContextProvider>
-          <ThemeProvider>
+          <ThemeProvider analyticsConfig={analyticsConfig}>
             {children}
           </ThemeProvider>
         </AppContextProvider>

@@ -51,7 +51,7 @@ const getGaCookieMetadata = async () => {
   const gaCookieRaw = store.get("_ga")?.value ?? null;
   const gaClientId = parseGaClientId(gaCookieRaw);
 
-  const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim() || "";
+  const measurementId = process.env["NEXT_PUBLIC_GOOGLE_ANALYTICS_ID"]?.trim() || "";
   const suffix = measurementId.startsWith("G-") ? measurementId.slice(2) : "";
   const preferredSessionCookieName = suffix ? `_ga_${suffix}` : "";
 

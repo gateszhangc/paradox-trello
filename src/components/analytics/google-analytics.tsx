@@ -2,22 +2,28 @@
 
 import Script from "next/script";
 
-export default function GoogleAnalytics() {
-  const analyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+type GoogleAnalyticsProps = {
+  analyticsId?: string;
+};
+
+export default function GoogleAnalytics({
+  analyticsId = "",
+}: GoogleAnalyticsProps) {
+  const normalizedAnalyticsId = analyticsId.trim();
 
   // Do not track in development
   if (process.env.NODE_ENV !== "production") {
     return null;
   }
 
-  if (!analyticsId) {
+  if (!normalizedAnalyticsId) {
     return null;
   }
 
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${normalizedAnalyticsId}`}
         strategy="afterInteractive"
       />
       <Script id="ga-init" strategy="afterInteractive">
@@ -25,7 +31,7 @@ export default function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${analyticsId}', { send_page_view: false });
+          gtag('config', '${normalizedAnalyticsId}', { send_page_view: false });
         `}
       </Script>
     </>

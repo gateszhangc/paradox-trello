@@ -1,7 +1,4 @@
 .next
-!.next/build
-!.next/build/standalone
-!.next/build/static
 .vercel
 .vscode
 .wrangler
@@ -10,5 +7,8 @@ debug
 node_modules
 .cursorrules
 .git
+playwright-report
+test-results
+.tmp
 vercel.json
 wrangler.toml

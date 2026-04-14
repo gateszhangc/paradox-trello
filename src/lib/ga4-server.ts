@@ -88,7 +88,7 @@ function roundValueForCurrency(value: number, currency: string): number {
 }
 
 function getMeasurementId(): string | null {
-  const measurementId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim();
+  const measurementId = process.env["NEXT_PUBLIC_GOOGLE_ANALYTICS_ID"]?.trim();
   if (!measurementId) {
     return null;
   }

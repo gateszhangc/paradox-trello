@@ -8,6 +8,12 @@ import ClarityAnalytics from "./clarity";
 import LogRocketAnalytics from "./logrocket";
 import GaRouteTracker from "./ga-route-tracker";
 
+export type AnalyticsConfig = {
+  googleAnalyticsId?: string;
+  clarityId?: string;
+  logRocketAppId?: string;
+};
+
 const getAnalyticsDelay = () => {
   if (typeof navigator === "undefined") {
     return 10000;
@@ -34,7 +40,11 @@ const getAnalyticsDelay = () => {
   return 10000;
 };
 
-export default function Analytics() {
+export default function Analytics({
+  googleAnalyticsId = "",
+  clarityId = "",
+  logRocketAppId = "",
+}: AnalyticsConfig) {
   const [ready, setReady] = useState(false);
   const isProduction = process.env.NODE_ENV === "production";
 
@@ -83,13 +93,13 @@ export default function Analytics() {
       {isProduction && ready && (
         <>
           <OpenPanelAnalytics />
-          <GoogleAnalytics />
+          <GoogleAnalytics analyticsId={googleAnalyticsId} />
           <GaRouteTracker />
           <Plausible />
-          <ClarityAnalytics />
+          <ClarityAnalytics clarityId={clarityId} />
         </>
       )}
-      <LogRocketAnalytics />
+      <LogRocketAnalytics appId={logRocketAppId} />
     </>
   );
 }

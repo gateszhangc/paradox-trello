@@ -6,4 +6,4 @@ resources:
 images:
   - name: ghcr.io/example/bloodhounds
     newName: registry.144.91.77.245.sslip.io/bloodhounds
-    newTag: "20260414065832"
+    newTag: "20260414084809"

@@ -5,11 +5,19 @@ import { ReactNode, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { Toaster } from "sonner";
 import { isAuthEnabled } from "@/lib/auth";
-import Analytics from "@/components/analytics";
+import Analytics, { type AnalyticsConfig } from "@/components/analytics";
 import Adsense from "./adsense";
 import SignModalPortal from "@/components/sign/modal-portal";
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
+type ThemeProviderProps = {
+  children: ReactNode;
+  analyticsConfig?: AnalyticsConfig;
+};
+
+export function ThemeProvider({
+  children,
+  analyticsConfig,
+}: ThemeProviderProps) {
   const locale = useLocale();
 
   useEffect(() => {
@@ -29,7 +37,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       {children}
 
       <Toaster position="top-center" richColors />
-      <Analytics />
+      <Analytics {...analyticsConfig} />
 
       {isAuthEnabled() && <SignModalPortal />}
 
