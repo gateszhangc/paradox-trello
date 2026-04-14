@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1800" viewBox="0 0 1600 1800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050505" />
+      <stop offset="100%" stop-color="#15181b" />
+    </linearGradient>
+    <linearGradient id="trace" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#77f6c9" />
+      <stop offset="100%" stop-color="#d9e7e1" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="7" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+    <rect width="1600" height="1800" fill="url(#bg)" />
+    
+  <g opacity="0.22">
+    <path d="M 96 94 H 1504" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
+    <path d="M 96 1706 H 1504" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
+    <path d="M 96 94 V 1706" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
+    <path d="M 1504 94 V 1706" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
+  </g>
+  <g opacity="0.28">
+    <path d="M 176 210 H 1380 V 360 H 672 V 538 H 1216 V 1560 H 176" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="5" />
+    <path d="M 236 280 H 928 V 430 H 512 V 640 H 1056" fill="none" stroke="url(#trace)" stroke-width="8" filter="url(#glow)" />
+  </g>
+
+    <path d="M 176 230 H 960 V 498 H 612 V 762 H 1222 V 1128 H 350 V 1500 H 1398" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="12" />
+    <path d="M 234 292 H 860 V 456 H 544 V 700 H 1124 V 1038 H 416 V 1414 H 1328" fill="none" stroke="url(#trace)" stroke-width="16" filter="url(#glow)" />
+    <circle cx="234" cy="292" r="20" fill="#f4efe6" />
+    <circle cx="1328" cy="1414" r="20" fill="#77f6c9" />
+    <g transform="translate(1110 178) scale(0.72)">
+      <rect width="512" height="512" fill="none" />
+      <rect x="46" y="46" width="420" height="420" rx="34" fill="rgba(10,11,12,0.82)" stroke="rgba(255,255,255,0.1)" />
+      
+  <rect x="78" y="78" width="356" height="356" rx="28.48" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3" />
+  <path d="M 142.07999999999998 127.84 H 334.32 V 206.16 H 227.51999999999998 V 284.48 H 355.68 V 369.91999999999996 H 142.07999999999998" fill="none" stroke="url(#trace)" stroke-width="17.8" stroke-linecap="square" stroke-linejoin="miter" filter="url(#glow)" />
+  <path d="M 191.92000000000002 127.84 V 177.68 M 284.48 284.48 V 334.32 M 142.07999999999998 248.88 H 184.8" fill="none" stroke="#f4efe6" stroke-width="9.256" stroke-linecap="square" />
+  <circle cx="142.07999999999998" cy="369.91999999999996" r="10.68" fill="#f4efe6" />
+  <circle cx="334.32" cy="127.84" r="10.68" fill="#77f6c9" />
+
+    </g>
+    <text x="146" y="1268" fill="#f4efe6" font-size="216" font-family="Arial Black, Arial, Helvetica, sans-serif" letter-spacing="8">PARADOX</text>
+    <text x="146" y="1474" fill="#f4efe6" font-size="216" font-family="Arial Black, Arial, Helvetica, sans-serif" letter-spacing="8">TRELLO</text>
+    <text x="154" y="1560" fill="#9da5ad" font-size="34" font-family="Arial, Helvetica, sans-serif" letter-spacing="10">ROUTE THE QUERY TO THE RIGHT OFFICIAL SURFACE</text>
+  
+</svg>

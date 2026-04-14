@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="420" viewBox="0 0 1480 420">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#050505" />
@@ -18,14 +18,21 @@
     </filter>
   </defs>
   
-    <rect width="512" height="512" fill="url(#bg)" />
-    <rect x="46" y="46" width="420" height="420" rx="34" fill="#0a0b0c" stroke="rgba(255,255,255,0.1)" />
-    
+    <rect width="1480" height="420" fill="#050505" />
+    <g transform="translate(42 38) scale(0.67)">
+      <rect width="512" height="512" fill="url(#bg)" />
+      <rect x="46" y="46" width="420" height="420" rx="34" fill="#0a0b0c" stroke="rgba(255,255,255,0.1)" />
+      
   <rect x="78" y="78" width="356" height="356" rx="28.48" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="3" />
   <path d="M 142.07999999999998 127.84 H 334.32 V 206.16 H 227.51999999999998 V 284.48 H 355.68 V 369.91999999999996 H 142.07999999999998" fill="none" stroke="url(#trace)" stroke-width="17.8" stroke-linecap="square" stroke-linejoin="miter" filter="url(#glow)" />
   <path d="M 191.92000000000002 127.84 V 177.68 M 284.48 284.48 V 334.32 M 142.07999999999998 248.88 H 184.8" fill="none" stroke="#f4efe6" stroke-width="9.256" stroke-linecap="square" />
   <circle cx="142.07999999999998" cy="369.91999999999996" r="10.68" fill="#f4efe6" />
   <circle cx="334.32" cy="127.84" r="10.68" fill="#77f6c9" />
 
+    </g>
+    <text x="424" y="176" fill="#f4efe6" font-size="152" font-family="Arial Black, Arial, Helvetica, sans-serif" letter-spacing="6">PARADOX</text>
+    <text x="424" y="304" fill="#f4efe6" font-size="152" font-family="Arial Black, Arial, Helvetica, sans-serif" letter-spacing="6">TRELLO</text>
+    <text x="430" y="356" fill="#9da5ad" font-size="28" font-family="Arial, Helvetica, sans-serif" letter-spacing="10">OFFICIAL LINKS / BOARD MAP / DISCORD / ROBLOX</text>
+    <rect x="430" y="382" width="456" height="8" fill="#77f6c9" />
   
 </svg>

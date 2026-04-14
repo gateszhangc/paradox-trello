@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bloodhounds-live
+  name: paradox-trello-live
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -9,27 +9,27 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - bloodhounds.homes
-        - www.bloodhounds.homes
-      secretName: bloodhounds-homes-tls
+        - paradox-trello.lol
+        - www.paradox-trello.lol
+      secretName: paradox-trello-lol-tls
   rules:
-    - host: bloodhounds.homes
+    - host: paradox-trello.lol
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: bloodhounds-web
+                name: paradox-trello-web
                 port:
                   name: http
-    - host: www.bloodhounds.homes
+    - host: www.paradox-trello.lol
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: bloodhounds-web
+                name: paradox-trello-web
                 port:
                   name: http

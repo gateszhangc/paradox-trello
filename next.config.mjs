@@ -131,6 +131,17 @@ const nextConfig = {
         has: [
           {
             type: "host",
+            value: "www.paradox-trello.lol",
+          },
+        ],
+        destination: "https://paradox-trello.lol/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
             value: "easyclaw.pro",
           },
         ],

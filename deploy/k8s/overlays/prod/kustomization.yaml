@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: bloodhounds
+namespace: paradox-trello
 resources:
   - ../../base
 images:
-  - name: ghcr.io/example/bloodhounds
-    newName: registry.144.91.77.245.sslip.io/bloodhounds
+  - name: ghcr.io/example/paradox-trello
+    newName: registry.144.91.77.245.sslip.io/paradox-trello
     newTag: "20260414084809"

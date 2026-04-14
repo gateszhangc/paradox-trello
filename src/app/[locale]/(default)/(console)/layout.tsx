@@ -4,12 +4,22 @@ import { Sidebar } from "@/types/blocks/sidebar";
 import { getTranslations } from "next-intl/server";
 import { getUserInfo } from "@/services/auth_user";
 import { redirect } from "next/navigation";
-import { isAuthEnabled } from "@/lib/auth";
+import {
+  isAuthEnabled,
+  isLocalProtectedRouteBypassEnabled,
+} from "@/lib/auth";
 
 export default async function ({ children }: { children: ReactNode }) {
-  const userInfo = await getUserInfo();
+  const authEnabled = isAuthEnabled();
+  const localProtectedRouteBypassEnabled = isLocalProtectedRouteBypassEnabled();
 
-  if (isAuthEnabled()) {
+  if (!authEnabled && !localProtectedRouteBypassEnabled) {
+    redirect("/");
+  }
+
+  const userInfo = authEnabled ? await getUserInfo() : null;
+
+  if (authEnabled) {
     if (!userInfo || !userInfo.email) {
       redirect("/auth/signin");
     }

@@ -5,7 +5,10 @@ import { Sidebar } from "@/types/blocks/sidebar";
 import { getUserInfo } from "@/services/auth_user";
 import { redirect } from "next/navigation";
 import LandingTheme from "@/components/theme/landing-theme";
-import { isAuthEnabled } from "@/lib/auth";
+import {
+  isAuthEnabled,
+  isLocalProtectedRouteBypassEnabled,
+} from "@/lib/auth";
 
 // Admin pages depend on request-scoped auth/session state and must not be
 // prerendered during production builds.
@@ -18,13 +21,14 @@ export default async function AdminLayout({
 }) {
   const wrapperClassName = "dark admin-shipany";
   const authEnabled = isAuthEnabled();
+  const localProtectedRouteBypassEnabled = isLocalProtectedRouteBypassEnabled();
 
   const sidebar: Sidebar = {
     brand: {
-      title: "Image Describer",
+      title: "Paradox Trello",
       logo: {
         src: "/imgs/logos/logo.png",
-        alt: "Image Describer",
+        alt: "Paradox Trello",
       },
       url: "/admin",
     },
@@ -99,7 +103,7 @@ export default async function AdminLayout({
         },
         {
           title: "Github",
-          url: "https://github.com/shipanyai/shipany-template-one",
+          url: "https://github.com/gateszhangc/paradox-trello",
           target: "_blank",
           icon: "RiGithubLine",
         },
@@ -141,11 +145,13 @@ export default async function AdminLayout({
     </LandingTheme>
   );
 
-  // When auth is disabled (local E2E / MVP), allow admin routes to be accessed
-  // without redirecting to /auth/signin. This keeps the account-pool UI usable
-  // while auth providers are turned off.
-  if (!authEnabled) {
+  // Only allow auth-disabled admin access during local development/E2E.
+  if (!authEnabled && localProtectedRouteBypassEnabled) {
     return wrap(<DashboardLayout sidebar={sidebar}>{children}</DashboardLayout>);
+  }
+
+  if (!authEnabled) {
+    redirect("/");
   }
 
   const userInfo = await getUserInfo();

@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://bloodhounds.homes";
+const DEFAULT_SITE_URL = "https://paradox-trello.lol";
 
 const stripTrailingSlash = (value: string) => value.replace(/\/+$/, "");
 

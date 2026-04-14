@@ -9,10 +9,10 @@ import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/providers/theme";
 import { getSiteUrl } from "@/lib/site-url";
 import {
-  BLOODHOUNDS_METADATA,
-  BLOODHOUNDS_OG_IMAGE,
-  BLOODHOUNDS_SITE_NAME,
-} from "@/lib/bloodhounds-site";
+  PARADOX_TRELLO_METADATA,
+  PARADOX_TRELLO_OG_IMAGE,
+  PARADOX_TRELLO_SITE_NAME,
+} from "@/lib/paradox-trello-site";
 
 const readRuntimeEnv = (key: string) => process.env[key]?.trim() || "";
 
@@ -29,26 +29,26 @@ export async function generateMetadata({
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      template: `%s | ${BLOODHOUNDS_SITE_NAME}`,
-      default: BLOODHOUNDS_METADATA.title,
+      template: `%s | ${PARADOX_TRELLO_SITE_NAME}`,
+      default: PARADOX_TRELLO_METADATA.title,
     },
-    description: BLOODHOUNDS_METADATA.description,
-    keywords: BLOODHOUNDS_METADATA.keywords.join(", "),
+    description: PARADOX_TRELLO_METADATA.description,
+    keywords: PARADOX_TRELLO_METADATA.keywords.join(", "),
     robots: {
-      index: true,
+      index: false,
       follow: true,
     },
     openGraph: {
       type: "website",
-      siteName: BLOODHOUNDS_SITE_NAME,
-      title: BLOODHOUNDS_METADATA.title,
-      description: BLOODHOUNDS_METADATA.description,
+      siteName: PARADOX_TRELLO_SITE_NAME,
+      title: PARADOX_TRELLO_METADATA.title,
+      description: PARADOX_TRELLO_METADATA.description,
       images: [
         {
-          url: BLOODHOUNDS_OG_IMAGE,
+          url: PARADOX_TRELLO_OG_IMAGE,
           width: 1200,
           height: 630,
-          alt: "Bloodhounds Homes editorial poster",
+          alt: "Paradox Trello editorial poster",
         },
       ],
     },

@@ -2,6 +2,21 @@ import { defineConfig, devices } from '@playwright/test';
 
 const playwrightPort = process.env.PLAYWRIGHT_PORT || '3002';
 const playwrightBaseUrl = `http://localhost:${playwrightPort}`;
+const playwrightWebServerCommand = [
+  "env",
+  "BACKEND_AUTOSTART=false",
+  "NEXT_RUNTIME_PROFILE=playwright",
+  "NEXT_DIST_DIR=.next/dev-playwright",
+  `PLAYWRIGHT_PORT=${playwrightPort}`,
+  `NEXT_PUBLIC_WEB_URL=${playwrightBaseUrl}`,
+  "NODE_NO_WARNINGS=1",
+  "NEXT_PUBLIC_AUTH_DISABLED=true",
+  "node",
+  "node_modules/next/dist/bin/next",
+  "dev",
+  "--port",
+  playwrightPort,
+].join(" ");
 
 export default defineConfig({
   testDir: './e2e',
@@ -12,7 +27,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   webServer: {
-    command: `cross-env PLAYWRIGHT_PORT=${playwrightPort} npm run dev:playwright`,
+    command: playwrightWebServerCommand,
     url: `${playwrightBaseUrl}/en`,
     reuseExistingServer: process.env.PLAYWRIGHT_REUSE_EXISTING_SERVER === 'true',
     timeout: 120 * 1000,

@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: bloodhounds-homes-tls
+  name: paradox-trello-lol-tls
 spec:
-  secretName: bloodhounds-homes-tls
+  secretName: paradox-trello-lol-tls
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
   dnsNames:
-    - bloodhounds.homes
-    - www.bloodhounds.homes
+    - paradox-trello.lol
+    - www.paradox-trello.lol

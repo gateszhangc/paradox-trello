@@ -1,9 +1,9 @@
 {
-  "name": "ai-outfit-generator",
+  "name": "paradox-trello",
   "version": "2.6.0",
   "private": true,
   "author": "idoubi",
-  "homepage": "https://bloodhounds.homes",
+  "homepage": "https://paradox-trello.lol",
   "engines": {
     "node": ">=18.17.0"
   },
@@ -18,7 +18,7 @@
     "start": "cross-env NODE_NO_WARNINGS=1 node scripts/start-standalone.mjs",
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true npm run build",
-    "docker:build": "docker build -f Dockerfile -t shipany-template-one:latest .",
+    "docker:build": "docker build -f Dockerfile -t paradox-trello:latest .",
     "db:generate": "npx drizzle-kit generate --config=src/db/config.ts",
     "db:migrate": "npx drizzle-kit migrate --config=src/db/config.ts",
     "db:studio": "npx drizzle-kit studio --config=src/db/config.ts",

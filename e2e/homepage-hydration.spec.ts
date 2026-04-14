@@ -12,18 +12,18 @@ test("homepage hydrates without missing next chunks", async ({ page }) => {
     }
   });
 
-  const response = await page.goto("/en", { waitUntil: "networkidle" });
+  const response = await page.goto("/en", { waitUntil: "domcontentloaded" });
 
   expect(response?.ok()).toBeTruthy();
 
   await expect(
-    page.getByRole("heading", { name: /Bloodhounds/i, level: 1 })
+    page.getByRole("heading", { name: /Paradox Trello/i, level: 1 })
   ).toBeVisible();
-  await page.getByRole("link", { name: /Jump to Episodes/i }).press("Enter");
-  await expect(page).toHaveURL(/#episodes$/);
+  await page.getByRole("link", { name: /Resources/i }).press("Enter");
+  await expect(page).toHaveURL(/#resources$/);
   await expect(
     page.getByRole("heading", {
-      name: /The first eight episodes move like a debt spiral with gloves on\./i,
+      name: /Open the official Paradox links without digging through clones\./i,
       level: 2,
     })
   ).toBeVisible();

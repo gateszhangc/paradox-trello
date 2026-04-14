@@ -14,4 +14,5 @@ export const routing = defineRouting({
   localePrefix,
   localeDetection,
   localeCookie,
+  alternateLinks: false,
 });

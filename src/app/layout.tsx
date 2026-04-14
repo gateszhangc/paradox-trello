@@ -30,6 +30,8 @@ export default async function RootLayout({
         {clarityId && <link rel="dns-prefetch" href="https://clarity.ms" />}
 
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.png" sizes="512x512" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
       </head>
       <body className="font-sans antialiased">{children}</body>
     </html>

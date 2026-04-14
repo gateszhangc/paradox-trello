@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: bloodhounds-web
+  name: paradox-trello-web
 data:
   NODE_ENV: production
   PORT: "3000"
   HOSTNAME: "0.0.0.0"
-  NEXT_PUBLIC_WEB_URL: https://bloodhounds.homes
-  NEXT_PUBLIC_PROJECT_NAME: bloodhounds
-  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: G-ZYCY37SYLV
-  NEXT_PUBLIC_CLARITY_PROJECT_ID: wb4ttwal07
+  NEXT_PUBLIC_WEB_URL: https://paradox-trello.lol
+  NEXT_PUBLIC_PROJECT_NAME: paradox-trello
+  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ""
+  NEXT_PUBLIC_CLARITY_PROJECT_ID: wbhm990q09
   NEXT_PUBLIC_DEFAULT_THEME: dark
   NEXT_PUBLIC_AUTH_DISABLED: "true"

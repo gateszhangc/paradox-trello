@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: bloodhounds-web
+  name: paradox-trello-web
 spec:
   selector:
-    app: bloodhounds-web
+    app: paradox-trello-web
   ports:
     - name: http
       port: 80

@@ -36,3 +36,7 @@ export function isAuthEnabled(): boolean {
     isGoogleOneTapEnabled()
   );
 }
+
+export function isLocalProtectedRouteBypassEnabled(): boolean {
+  return isAuthGloballyDisabled && process.env.NODE_ENV !== "production";
+}

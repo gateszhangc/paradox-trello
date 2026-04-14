@@ -1,23 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bloodhounds-preview
+  name: paradox-trello-preview
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - bloodhounds.144.91.77.245.sslip.io
-      secretName: bloodhounds-preview-tls
+        - paradox-trello.144.91.77.245.sslip.io
+      secretName: paradox-trello-preview-tls
   rules:
-    - host: bloodhounds.144.91.77.245.sslip.io
+    - host: paradox-trello.144.91.77.245.sslip.io
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: bloodhounds-web
+                name: paradox-trello-web
                 port:
                   name: http
