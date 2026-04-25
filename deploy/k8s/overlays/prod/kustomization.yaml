@@ -6,4 +6,4 @@ resources:
 images:
   - name: ghcr.io/example/paradox-trello
     newName: registry.144.91.77.245.sslip.io/paradox-trello
-    newTag: "e20d262c31292bc822da006b6db4ae47d574f659"
+    newTag: "56e949209a0cf16e572042f3fc97009c92953d49"
