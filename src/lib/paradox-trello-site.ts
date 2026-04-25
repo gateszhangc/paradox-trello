@@ -5,9 +5,9 @@ export const PARADOX_TRELLO_OG_IMAGE =
   "/brand/paradox-trello/paradox-trello-og.png";
 
 export const PARADOX_TRELLO_LINKS = {
-  trello: "https://trello.com/b/NHLR344C/paradox-information",
-  discord: "https://discord.gg/ableachgame",
-  game: "https://www.roblox.com/games/9870517705/Paradox",
+  trello: "https://mirofish.my/",
+  discord: "https://mirofish.my/",
+  game: "https://mirofish.my/",
 } as const;
 
 export const PARADOX_TRELLO_METADATA = {

@@ -14,13 +14,13 @@ test("paradox trello landing exposes the three official resource links", async (
 
   await expect(
     page.getByRole("link", { name: /Open Trello Board/i }).first()
-  ).toHaveAttribute("href", "https://trello.com/b/NHLR344C/paradox-information");
+  ).toHaveAttribute("href", "https://mirofish.my/");
   await expect(
     page.getByRole("link", { name: /Join Official Discord/i }).first()
-  ).toHaveAttribute("href", "https://discord.gg/ableachgame");
+  ).toHaveAttribute("href", "https://mirofish.my/");
   await expect(
     page.getByRole("link", { name: /Play Roblox Game/i }).first()
-  ).toHaveAttribute("href", "https://www.roblox.com/games/9870517705/Paradox");
+  ).toHaveAttribute("href", "https://mirofish.my/");
 
   await expect(page.getByText("NHLR344C", { exact: true })).toBeVisible();
   await expect(page.getByText("ableachgame", { exact: true })).toBeVisible();
